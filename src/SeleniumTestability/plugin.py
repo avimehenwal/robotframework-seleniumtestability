@@ -486,19 +486,25 @@ class SeleniumTestability(LibraryComponent):
 
     @log_wrapper
     @keyword
-    def scroll_to_bottom(self: "SeleniumTestability") -> None:
+    def scroll_to_bottom(self: "SeleniumTestability", smooth=False) -> None:
         """
         Scrolls current window to the bottom of the page
+        Parameters:
+         - ``smooth`` if sets to true, enables smooth scrolling, otherwise instant.
         """
-        self.ctx.driver.execute_script(JS_LOOKUP["scroll_to_bottom"])
+        behaviour = "smooth" if smooth else "instant"
+        self.ctx.driver.execute_script(JS_LOOKUP["scroll_to_bottom"], behavior)
 
     @log_wrapper
     @keyword
-    def scroll_to_top(self: "SeleniumTestability") -> None:
+    def scroll_to_top(self: "SeleniumTestability", smooth=False) -> None:
         """
         Scrolls current window to the bottom of the page
+        Parameters:
+         - ``smooth`` if sets to true, enables smooth scrolling, otherwise instant.
         """
-        self.ctx.driver.execute_script(JS_LOOKUP["scroll_to_top"])
+        behaviour = "smooth" if smooth else "instant"
+        self.ctx.driver.execute_script(JS_LOOKUP["scroll_to_top"], behavior)
 
     @log_wrapper
     @keyword
